@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<header th:fragment="cabecalho">
+
+    <span>Olá, <b th:text="${session.usuarioLogado.username()}"></b>!</span>
+    <a href="/logout">Sair</a>
+
+    <nav>
+        <a th:href="@{/categorias}">Categorias</a>
+        <a th:href="@{/produtos}">Produtos</a>
+        <a th:if="${session.usuarioLogado.role() == 'ROLE_ADMIN'}" th:href="@{/usuarios}">Gerenciar Usuários</a>
+    </nav>
+
+    <hr/>
+</header>
+
+</body>
+</html>

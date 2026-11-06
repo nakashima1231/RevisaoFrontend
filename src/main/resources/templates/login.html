@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Frontend Loja</title>
+</head>
+<body>
+
+<h1>Autenticação</h1>
+
+<div th:if="${erro}" style="color: red;">
+    <p th:text="${erro}"></p>
+</div>
+
+<form th:action="@{/login}" th:object="${loginData}" method="post">
+    <p>
+        <label for="username">Usuário:</label><br>
+        <input type="text" id="username" th:field="*{username}" value="admin" required />
+    </p>
+
+    <p>
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" th:field="*{password}" value="123456" required />
+    </p>
+
+    <p>
+        <button type="submit">Entrar</button>
+    </p>
+</form>
+
+</body>
+</html>
+

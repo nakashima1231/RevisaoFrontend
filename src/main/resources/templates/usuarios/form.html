@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Usuario</title>
+</head>
+<body>
+    <div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+    <h1 th:text="${usuario.id != null} ? 'Editar Usuario' : 'Cadastrar Usuario'"></h1>
+    <form th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <p>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" th:field="*{username}" required />
+        </p>
+        <p>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" th:field="*{password}" required />
+        </p>
+        <p>
+            <label for="role">Role:</label><br>
+            <select id="role" th:field="*{role}" required>
+                <option value="ROLE_USER">Usuário (ROLE_USER)</option>
+                <option value="ROLE_ADMIN">Administrador (ROLE_ADMIN)</option>
+            </select>
+        </p>
+        <p>
+            <button type="submit">Salvar</button>
+            <a th:href="@{/usuarios}">Cancelar</a>
+        </p>
+    </form>
+</body>
+</html>
+
+
