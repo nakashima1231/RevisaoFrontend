@@ -22,12 +22,12 @@ public class ClienteController {
 
     @GetMapping
     public String listar(Model model) {
-        List<ClienteDTO> Clientes = restClient.get()
+        List<ClienteDTO> clientes = restClient.get()
                 .uri("/clientes")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<ClienteDTO>>() {});
 
-        model.addAttribute("Clientes", Clientes);
+        model.addAttribute("clientes", clientes);
         return "clientes/lista";
     }
 

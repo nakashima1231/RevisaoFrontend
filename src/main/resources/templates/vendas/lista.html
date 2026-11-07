@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de vendas</title>
+</head>
+<body>
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<h1>vendas</h1>
+<p>
+    <a th:href="@{/vendas/novo}">Cadastrar venda</a>
+</p>
+<table border="1" cellpadding="8">
+    <thead>
+    <tr>
+        <th>Data</th>
+        <th>Valor</th>
+        <th>Cliente</th>
+        <th>Vendedor</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prod : ${vendas}">
+        <td>
+            <img th:src="@{${apiBaseUrl} + ${prod.foto()}}" alt="Foto do venda" width="30" />
+        </td>
+        <td th:text="${#numbers.formatCurrency(prod.valor())}"></td>
+
+        <td>
+            <a th:href="@{/vendas/editar/{id}(id=${prod.id()})}">Editar</a>
+            <a th:href="@{/vendas/excluir/{id}(id=${prod.id()})}">Excluir</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

@@ -2,14 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Produtos</title>
+    <title>Lista de vendedors</title>
 </head>
 <body>
 <div th:replace="~{fragments/layout :: cabecalho}"></div>
 
-<h1>Produtos</h1>
+<h1>vendedors</h1>
 <p>
-    <a th:href="@{/produtos/novo}">Cadastrar Produto</a>
+    <a th:href="@{/vendedors/novo}">Cadastrar vendedor</a>
 </p>
 <table border="1" cellpadding="8">
     <thead>
@@ -19,14 +19,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="prod : ${produtos}">
+    <tr th:each="prod : ${vendedors}">
         <td>
-            <img th:src="@{${apiBaseUrl} + ${prod.foto()}}" alt="Foto do Produto" width="30" />
+            <img th:src="@{${apiBaseUrl} + ${prod.foto()}}" alt="Foto do vendedor" width="30" />
         </td>
         <td th:text="${prod.nome()}"></td>
         <td>
-            <a th:href="@{/produtos/editar/{id}(id=${prod.id()})}">Editar</a>
-            <a th:href="@{/produtos/excluir/{id}(id=${prod.id()})}">Excluir</a>
+            <a th:href="@{/vendedors/editar/{id}(id=${prod.id()})}">Editar</a>
+            <a th:href="@{/vendedors/excluir/{id}(id=${prod.id()})}">Excluir</a>
         </td>
     </tr>
     </tbody>
