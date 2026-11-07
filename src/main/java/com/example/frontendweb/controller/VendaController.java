@@ -42,7 +42,7 @@ public class VendaController {
                 .body(new ParameterizedTypeReference<List<VendaDTO>>() {});
 
         model.addAttribute("apiBaseUrl", apiBaseUrl);
-        model.addAttribute("Vendas", Vendas);
+        model.addAttribute("vendas", Vendas);
         return "vendas/lista";
     }
 
@@ -60,7 +60,7 @@ public class VendaController {
                 .retrieve()
                 .body(VendaDTO.class);
 
-        model.addAttribute("Venda", Venda);
+        model.addAttribute("venda", Venda);
         model.addAttribute("categorias", buscarCategorias());
         return "vendas/form";
     }
@@ -108,14 +108,14 @@ public class VendaController {
         if (payload.id() == null) {
             restClient.post()
                     .uri("/vendas")
-                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .contentType(MediaType.APPLICATION_JSON)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();
         } else {
             restClient.put()
                     .uri("/vendas/{id}", payload.id())
-                    .contentType(MediaType.MULTIPART_FORM_DATA)
+                    .contentType(MediaType.APPLICATION_JSON)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();

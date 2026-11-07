@@ -57,7 +57,7 @@ public class VendedorController {
                 .retrieve()
                 .body(VendedorDTO.class);
 
-        model.addAttribute("Vendedor", Vendedor);
+        model.addAttribute("vendedor", Vendedor);
         model.addAttribute("categorias", buscarCategorias());
         return "vendedors/form";
     }

@@ -22,9 +22,6 @@
     </thead>
     <tbody>
     <tr th:each="prod : ${vendas}">
-        <td>
-            <img th:src="@{${apiBaseUrl} + ${prod.foto()}}" alt="Foto do venda" width="30" />
-        </td>
         <td th:text="${#numbers.formatCurrency(prod.valor())}"></td>
 
         <td>
