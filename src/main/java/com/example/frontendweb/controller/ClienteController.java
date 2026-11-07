@@ -34,7 +34,7 @@ public class ClienteController {
     @GetMapping("/novo")
     public String novoForm(Model model) {
         // Novo Cliente sem Cliente associada
-        model.addAttribute("Cliente", new ClienteDTO());
+        model.addAttribute("cliente", new ClienteDTO());
         return "clientes/form";
     }
 

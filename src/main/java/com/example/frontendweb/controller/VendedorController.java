@@ -45,7 +45,7 @@ public class VendedorController {
 
     @GetMapping("/novo")
     public String novoForm(Model model) {
-        model.addAttribute("Vendedor", new VendedorDTO());
+        model.addAttribute("vendedor", new VendedorDTO());
         model.addAttribute("categorias", buscarCategorias());
         return "vendedors/form";
     }

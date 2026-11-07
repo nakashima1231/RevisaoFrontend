@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Vendas")
+@RequestMapping("/vendas")
 public class VendaController {
 
     private final RestClient restClient;
@@ -37,32 +37,32 @@ public class VendaController {
     @GetMapping
     public String listar(Model model) {
         List<VendaDTO> Vendas = restClient.get()
-                .uri("/Vendas")
+                .uri("/vendas")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<VendaDTO>>() {});
 
         model.addAttribute("apiBaseUrl", apiBaseUrl);
         model.addAttribute("Vendas", Vendas);
-        return "Vendas/lista";
+        return "vendas/lista";
     }
 
     @GetMapping("/novo")
     public String novoForm(Model model) {
-        model.addAttribute("Venda", new VendaDTO());
+        model.addAttribute("venda", new VendaDTO());
         model.addAttribute("categorias", buscarCategorias());
-        return "Vendas/form";
+        return "vendas/form";
     }
 
     @GetMapping("/editar/{id}")
     public String editarForm(@PathVariable Long id, Model model) {
         VendaDTO Venda = restClient.get()
-                .uri("/Vendas/{id}", id)
+                .uri("/vendas/{id}", id)
                 .retrieve()
                 .body(VendaDTO.class);
 
         model.addAttribute("Venda", Venda);
         model.addAttribute("categorias", buscarCategorias());
-        return "Vendas/form";
+        return "vendas/form";
     }
 
     @PostMapping("/salvar")
@@ -107,20 +107,20 @@ public class VendaController {
 
         if (payload.id() == null) {
             restClient.post()
-                    .uri("/Vendas")
+                    .uri("/vendas")
                     .contentType(MediaType.MULTIPART_FORM_DATA)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();
         } else {
             restClient.put()
-                    .uri("/Vendas/{id}", payload.id())
+                    .uri("/vendas/{id}", payload.id())
                     .contentType(MediaType.MULTIPART_FORM_DATA)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();
         }
-        return "redirect:/Vendas";
+        return "redirect:/vendas";
     }
 
     private List<CategoriaDTO> buscarCategorias() {
@@ -133,10 +133,10 @@ public class VendaController {
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable Long id) {
         restClient.delete()
-                .uri("/Vendas/{id}", id)
+                .uri("/vendas/{id}", id)
                 .retrieve()
                 .toBodilessEntity();
 
-        return "redirect:/Vendas";
+        return "redirect:/vendas";
     }
 }
