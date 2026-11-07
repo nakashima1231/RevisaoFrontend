@@ -28,8 +28,8 @@
         <td th:text="${venda.vendedor().nome}"></td>
 
         <td>
-            <a th:href="@{/vendas/editar/{id}(id=${prod.id()})}">Editar</a>
-            <a th:href="@{/vendas/excluir/{id}(id=${prod.id()})}">Excluir</a>
+            <a th:href="@{/vendas/editar/{id}(id=${venda.id()})}">Editar</a>
+            <a th:href="@{/vendas/excluir/{id}(id=${venda.id()})}">Excluir</a>
         </td>
     </tr>
     </tbody>
