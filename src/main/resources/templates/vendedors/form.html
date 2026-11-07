@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de vendedor</title>
+</head>
+<body>
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<h1 th:text="${vendedor.id != null} ? 'Editar vendedor' : 'Cadastrar vendedor'"></h1>
+
+<!-- 1. Adicionado enctype="multipart/form-data" -->
+<form th:action="@{/vendedors/salvar}" th:object="${vendedor}" method="post" enctype="multipart/form-data">
+    <input type="hidden" th:field="*{id}" />
+    
+    <p>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" th:field="*{nome}" required />
+    </p>
+    
+    <!-- 2. Novo campo para o Upload da Foto -->
+    <p>
+        <label for="fotoFile">Foto do vendedor:</label><br>
+        <input type="file" id="fotoFile" name="fotoFile" accept="image/*" />
+    </p>
+    
+    <p>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/vendedors}">Cancelar</a>
+    </p>
+</form>
+</body>
+</html>

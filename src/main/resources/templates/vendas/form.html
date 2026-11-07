@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de venda</title>
+</head>
+<body>
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<h1 th:text="${venda.id != null} ? 'Editar venda' : 'Cadastrar venda'"></h1>
+<form th:action="@{/vendas/salvar}" th:object="${venda}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <p>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" th:field="*{nome}" required />
+    </p>
+
+    <p>
+        <label for="data">Data: </label><br>
+        <input type="date" id="data" th:field="*{data}" required />
+    </p>
+
+    <p>
+        <label for="valor">Valor: </label><br>
+        <input type="number" id="valor" th:field="*{valor}" required />
+    </p>
+
+    <p>
+        <label for="cliente">cliente </label><br>
+        <input type="text" id="cliente" th:field="*{cliente}" required />
+    </p>
+
+    <p>
+        <label for="vendedor"> vendedor</label><br>
+        <input type="text" id="vendedor" th:field="*{vendedor}" required />
+    </p>
+
+    <p>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/vendas}">Cancelar</a>
+    </p>
+</form>
+</body>
+</html>
+

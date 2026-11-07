@@ -17,6 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .addPathPatterns("/categorias/**")
                 .addPathPatterns("/produtos/**")
                 .addPathPatterns("/usuarios/**")
+                .addPathPatterns("/cliente/**")
+                .addPathPatterns("vendedors/**")
+                .addPathPatterns("/vendas/**")
                 .excludePathPatterns("/login", "/logout"); // Libera telas de autenticação
     }
 }

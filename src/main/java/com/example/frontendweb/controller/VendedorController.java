@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
-@RequestMapping("/Vendedors")
+@RequestMapping("/vendedors")
 public class VendedorController {
 
     private final RestClient restClient;
@@ -34,7 +34,7 @@ public class VendedorController {
     @GetMapping
     public String listar(Model model) {
         List<VendedorDTO> Vendedors = restClient.get()
-                .uri("/Vendedors")
+                .uri("/vendedors")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<VendedorDTO>>() {});
 
@@ -53,7 +53,7 @@ public class VendedorController {
     @GetMapping("/editar/{id}")
     public String editarForm(@PathVariable Long id, Model model) {
         VendedorDTO Vendedor = restClient.get()
-                .uri("/Vendedors/{id}", id)
+                .uri("/vendedors/{id}", id)
                 .retrieve()
                 .body(VendedorDTO.class);
 
@@ -101,20 +101,20 @@ public class VendedorController {
 
         if (payload.id() == null) {
             restClient.post()
-                    .uri("/Vendedors")
+                    .uri("/vendedors")
                     .contentType(MediaType.MULTIPART_FORM_DATA)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();
         } else {
             restClient.put()
-                    .uri("/Vendedors/{id}", payload.id())
+                    .uri("/vendedors/{id}", payload.id())
                     .contentType(MediaType.MULTIPART_FORM_DATA)
                     .body(multipartBody)
                     .retrieve()
                     .toBodilessEntity();
         }
-        return "redirect:/Vendedors";
+        return "redirect:/vendedors";
     }
 
     private List<CategoriaDTO> buscarCategorias() {
@@ -127,10 +127,10 @@ public class VendedorController {
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable Long id) {
         restClient.delete()
-                .uri("/Vendedors/{id}", id)
+                .uri("/vendedors/{id}", id)
                 .retrieve()
                 .toBodilessEntity();
 
-        return "redirect:/Vendedors";
+        return "redirect:/vendedors";
     }
 }

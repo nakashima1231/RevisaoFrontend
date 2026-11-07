@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Cliente</title>
+</head>
+<body>
+<div th:replace="~{fragments/layout :: cabecalho}"></div>
+
+<h1 th:text="${cliente.id != null} ? 'Editar cliente' : 'Cadastrar cliente'"></h1>
+<form th:action="@{/clientes/salvar}" th:object="${cliente}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    <p>
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" th:field="*{nome}" required />
+        <input type="number" id="renda" th:field="*{renda}"/>
+    </p>
+    <p>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/clientes}">Cancelar</a>
+    </p>
+</form>
+</body>
+</html>
+

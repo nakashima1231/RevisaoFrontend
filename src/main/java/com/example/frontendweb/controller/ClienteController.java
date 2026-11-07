@@ -23,12 +23,12 @@ public class ClienteController {
     @GetMapping
     public String listar(Model model) {
         List<ClienteDTO> Clientes = restClient.get()
-                .uri("/Clientes")
+                .uri("/clientes")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<ClienteDTO>>() {});
 
         model.addAttribute("Clientes", Clientes);
-        return "Clientes/lista";
+        return "clientes/lista";
     }
 
     @GetMapping("/novo")
@@ -41,7 +41,7 @@ public class ClienteController {
     @GetMapping("/editar/{id}")
     public String editarForm(@PathVariable Long id, Model model) {
         ClienteDTO Cliente = restClient.get()
-                .uri("/Clientes/{id}", id)
+                .uri("/clientes/{id}", id)
                 .retrieve()
                 .body(ClienteDTO.class);
 
@@ -80,7 +80,7 @@ public class ClienteController {
     @GetMapping("/excluir/{id}")
     public String excluir(@PathVariable Long id) {
         restClient.delete()
-                .uri("/Clientes/{id}", id)
+                .uri("/clientes/{id}", id)
                 .retrieve()
                 .toBodilessEntity();
 
