@@ -21,15 +21,13 @@
         <input type="number" id="valor" th:field="*{valor}" required />
     </p>
 
-    <p>
-        <label for="cliente">cliente </label><br>
-        <input type="text" id="cliente" th:field="*{cliente}" required />
-    </p>
+    <select>
+        <option value="">Selecione um cliente</option>
+    </select>
 
-    <p>
-        <label for="vendedor"> vendedor</label><br>
-        <input type="text" id="vendedor" th:field="*{vendedor}" required />
-    </p>
+    <select>
+        <option value="">Selecione um Vendedor</option>
+    </select>
 
     <p>
         <button type="submit">Salvar</button>

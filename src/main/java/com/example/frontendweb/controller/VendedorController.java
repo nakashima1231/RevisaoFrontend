@@ -58,17 +58,14 @@ public class VendedorController {
                 .body(VendedorDTO.class);
 
         model.addAttribute("vendedor", Vendedor);
-        model.addAttribute("categorias", buscarCategorias());
         return "vendedors/form";
     }
 
     @PostMapping("/salvar")
     public String salvar(@ModelAttribute VendedorDTO VendedorDTO,
-                         @RequestParam(value = "categoria.id", required = false) Long categoriaId,
                          @RequestParam(value = "fotoFile", required = false) MultipartFile fotoFile,
                          @RequestParam(value = "manualFile", required = false) MultipartFile manualFile) throws IOException {
 
-        CategoriaDTO categoriaComId = (categoriaId != null) ? new CategoriaDTO(categoriaId, null) : null;
 
         VendedorDTO payload = new VendedorDTO(
                 VendedorDTO.id(),

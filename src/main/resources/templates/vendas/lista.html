@@ -22,7 +22,10 @@
     </thead>
     <tbody>
     <tr th:each="prod : ${vendas}">
+        <td th:text="${venda.data()}"></td>
         <td th:text="${#numbers.formatCurrency(prod.valor())}"></td>
+        <td th:text="${venda.cliente().nome}"></td>
+        <td th:text="${venda.vendedor().nome}"></td>
 
         <td>
             <a th:href="@{/vendas/editar/{id}(id=${prod.id()})}">Editar</a>

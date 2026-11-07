@@ -109,14 +109,14 @@ public class VendaController {
             restClient.post()
                     .uri("/vendas")
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(multipartBody)
+                    .body(payload)
                     .retrieve()
                     .toBodilessEntity();
         } else {
             restClient.put()
                     .uri("/vendas/{id}", payload.id())
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(multipartBody)
+                    .body(payload)
                     .retrieve()
                     .toBodilessEntity();
         }
