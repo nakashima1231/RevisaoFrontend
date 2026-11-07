@@ -21,9 +21,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="prod : ${vendas}">
+    <tr th:each="venda : ${vendas}">
         <td th:text="${venda.data()}"></td>
-        <td th:text="${#numbers.formatCurrency(prod.valor())}"></td>
+        <td th:text="${#numbers.formatCurrency(venda.valor())}"></td>
         <td th:text="${venda.cliente().nome}"></td>
         <td th:text="${venda.vendedor().nome}"></td>
 
