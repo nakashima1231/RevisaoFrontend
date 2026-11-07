@@ -45,7 +45,7 @@ public class ClienteController {
                 .retrieve()
                 .body(ClienteDTO.class);
 
-        model.addAttribute("Cliente", Cliente);
+        model.addAttribute("cliente", Cliente);
         return "clientes/form";
     }
 

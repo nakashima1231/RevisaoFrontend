@@ -33,21 +33,21 @@ public class VendedorController {
 
     @GetMapping
     public String listar(Model model) {
-        List<VendedorDTO> Vendedors = restClient.get()
+        List<VendedorDTO> vendedors = restClient.get()
                 .uri("/vendedors")
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<VendedorDTO>>() {});
 
         model.addAttribute("apiBaseUrl", apiBaseUrl);
-        model.addAttribute("Vendedors", Vendedors);
-        return "Vendedors/lista";
+        model.addAttribute("vendedors", vendedors);
+        return "vendedors/lista";
     }
 
     @GetMapping("/novo")
     public String novoForm(Model model) {
         model.addAttribute("Vendedor", new VendedorDTO());
         model.addAttribute("categorias", buscarCategorias());
-        return "Vendedors/form";
+        return "vendedors/form";
     }
 
     @GetMapping("/editar/{id}")
@@ -59,7 +59,7 @@ public class VendedorController {
 
         model.addAttribute("Vendedor", Vendedor);
         model.addAttribute("categorias", buscarCategorias());
-        return "Vendedors/form";
+        return "vendedors/form";
     }
 
     @PostMapping("/salvar")
